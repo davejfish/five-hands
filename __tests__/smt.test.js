@@ -10,7 +10,7 @@ describe('backend-express-template routes', () => {
   it('#POST /smt should return list of smt games', async () => {
     const response = await request(app).get('/smt');
     expect(response.status).toBe(200);
-    expect(response.body.length).toEqual(4);
+    expect(response.body.length).toEqual(5);
   });
   afterAll(() => {
     pool.end();
