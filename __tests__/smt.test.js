@@ -24,6 +24,17 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#INSERT /smt should insert item into smt table', async () => {
+    const newSMT = {
+      title: 'megami tensei',
+      platform: 'famicom'
+    };
+    const response = await request(app).post('/smt').send(newSMT);
+    expect(response.status).toBe(200);
+    expect(response.body.title).toEqual(newSMT.title);
+    expect(response.body.platform).toEqual(newSMT.platform);
+  });
+
   afterAll(() => {
     pool.end();
   });
