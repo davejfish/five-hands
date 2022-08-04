@@ -1,12 +1,26 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS smt;
+DROP TABLE IF EXISTS consoles;
 
 CREATE TABLE smt (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
   title VARCHAR,
   platform VARCHAR
 );
+
+CREATE TABLE consoles (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  console VARCHAR,
+  released NUMERIC
+);
+
+INSERT INTO consoles (
+  console, released
+) VALUES
+('famicom', 1983),
+('super famicom', 1990),
+('sega genesis', 1989);
 
 
 INSERT INTO SMT (
