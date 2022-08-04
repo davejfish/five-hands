@@ -8,13 +8,13 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it('#POST /consoles should return all consoles', async () => {
+  it('#GET /consoles should return all consoles', async () => {
     const response = await request(app).get('/consoles');
     expect(response.status).toBe(200);
     expect(response.body[0]).toEqual({
       id: expect.any(String),
       console: expect.any(String),
-      released: expect.any(Number),
+      released: expect.any(String),
     });
   });
 

@@ -8,13 +8,13 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it('#POST /smt should return list of smt games', async () => {
+  it('#GET /smt should return list of smt games', async () => {
     const response = await request(app).get('/smt');
     expect(response.status).toBe(200);
     expect(response.body.length).toEqual(5);
   });
 
-  it('#POST smt/:id should return an smt game', async () => {
+  it('#GET smt/:id should return an smt game', async () => {
     const response = await request(app).get('/smt/1');
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
