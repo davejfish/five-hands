@@ -18,6 +18,16 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#GET /fish/:id should return a fish', async () => {
+    const response = await request(app).get('/fish/1');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      id: '1',
+      name: 'saba',
+      yummy: true,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
