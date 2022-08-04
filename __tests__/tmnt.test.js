@@ -48,6 +48,14 @@ describe('backend-express-template routes', () => {
     expect(response.body.name).toEqual(update.name);
   });
 
+  it('#DELETE /tmnt/1 should delete a tmnt', async () => {
+    const response = await request(app).delete('/tmnt/1');
+    expect(response.status).toBe(200);
+
+    const deletedTMNT = await request(app).get('/tmnt/1');
+    expect(deletedTMNT.status).toBe(500);
+  });
+
   afterAll(() => {
     pool.end();
   });
