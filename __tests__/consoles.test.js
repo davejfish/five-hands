@@ -18,6 +18,16 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#GET /consoles/:id should return a specific console', async () => {
+    const response = await request(app).get('/consoles/1');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      id: '1',
+      console: 'famicom',
+      released: '1983'
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
