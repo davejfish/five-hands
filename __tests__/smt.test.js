@@ -49,7 +49,7 @@ describe('backend-express-template routes', () => {
     expect(response.status).toBe(200);
     
     const smtGame = await request(app).get('/smt/1');
-    expect(smtGame.status).toBe(404);
+    expect(smtGame.status).toBe(500);
   });
 
   afterAll(() => {
