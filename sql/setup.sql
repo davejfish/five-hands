@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS smt;
 DROP TABLE IF EXISTS consoles;
+DROP TABLE IF EXISTS tmnt;
 
 CREATE TABLE smt (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -15,13 +16,26 @@ CREATE TABLE consoles (
   released NUMERIC
 );
 
+CREATE TABLE tmnt (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR,
+  weapon VARCHAR
+);
+
+INSERT INTO tmnt (
+  name, weapon
+) VALUES
+('leonardo', 'katana'),
+('raphael', 'sai'),
+('michelangelo', 'nun-chuck'),
+('donatello', 'bo');
+
 INSERT INTO consoles (
   console, released
 ) VALUES
 ('famicom', 1983),
 ('super famicom', 1990),
 ('sega genesis', 1989);
-
 
 INSERT INTO SMT (
   title, platform
