@@ -19,6 +19,16 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#GET /os/:id should return a single os', async () => {
+    const response = await request(app).get('/os/1');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      id: '1',
+      name: 'android',
+      good: true,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
