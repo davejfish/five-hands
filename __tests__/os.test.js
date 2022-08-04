@@ -40,6 +40,15 @@ describe('backend-express-template routes', () => {
     expect(response.body.good).toEqual(newOS.good);
   });
 
+  it('#PUT /os/1 should update an existing os', async () => {
+    const update = {
+      name: 'droid'
+    };
+    const response = await request(app).put('/os/1').send(update);
+    expect(response.status).toBe(200);
+    expect(response.body.name).toEqual(update.name);
+  });
+  
   afterAll(() => {
     pool.end();
   });
