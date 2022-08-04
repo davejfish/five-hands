@@ -50,6 +50,14 @@ describe('backend-express-template routes', () => {
     expect(response.body.yummy).toEqual(newFish.yummy);
   });
 
+  it('#DELETE /fish/:id should delete a fish', async () => {
+    const response = await request(app).delete('/fish/1');
+    expect(response.status).toBe(200);
+
+    const deletedFish = await request(app).get('/fish/1');
+    expect(deletedFish.status).toBe(500);
+  });
+
   afterAll(() => {
     pool.end();
   });
