@@ -48,6 +48,14 @@ describe('backend-express-template routes', () => {
     expect(response.status).toBe(200);
     expect(response.body.name).toEqual(update.name);
   });
+
+  it('#DELETE /os/:id should delete an os', async () => {
+    const response = await request(app).delete('/os/1');
+    expect(response.status).toBe(200);
+    
+    const deletedOS = await request(app).get('/os/1');
+    expect(deletedOS.status).toBe(500);
+  });
   
   afterAll(() => {
     pool.end();
