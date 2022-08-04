@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS smt;
 DROP TABLE IF EXISTS consoles;
 DROP TABLE IF EXISTS tmnt;
 DROP TABLE IF EXISTS fish;
+DROP TABLE IF EXISTS os;
 
 CREATE TABLE smt (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -28,6 +29,19 @@ CREATE TABLE fish (
   name VARCHAR,
   yummy BOOLEAN
 );
+
+CREATE TABLE os (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR,
+  good BOOLEAN
+);
+
+INSERT INTO os (
+  name, good
+) VALUES
+('android', true),
+('ios', false),
+('windows', false);
 
 INSERT INTO fish (
   name, yummy
