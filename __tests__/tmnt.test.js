@@ -28,6 +28,17 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#POST /tmnt should add a new tmnt', async () => {
+    const newTMNT = {
+      name: 'casey jones',
+      weapon: 'hockey stick'
+    };
+    const response = await request(app).post('/tmnt').send(newTMNT);
+    expect(response.status).toBe(200);
+    expect(response.body.name).toEqual(newTMNT.name);
+    expect(response.body.weapon).toEqual(newTMNT.weapon);
+  });
+
   afterAll(() => {
     pool.end();
   });
