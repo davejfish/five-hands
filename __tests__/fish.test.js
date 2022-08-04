@@ -28,7 +28,18 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it('#PUT /fish should add a new fish', async () => {
+  it('#POST /fish should add a new fish', async () => {
+    const newFish = {
+      name: 'maguro',
+      yummy: true,
+    };
+    const response = await request(app).post('/fish').send(newFish);
+    expect(response.status).toBe(200);
+    expect(response.body.name).toEqual(newFish.name);
+    expect(response.body.yummy).toEqual(newFish.yummy);
+  });
+
+  it('#PUT /fish/:id should update an existing fish', async () => {
     const newFish = {
       name: 'maguro',
       yummy: true
