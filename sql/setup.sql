@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS smt;
 DROP TABLE IF EXISTS consoles;
 DROP TABLE IF EXISTS tmnt;
+DROP TABLE IF EXISTS fish;
 
 CREATE TABLE smt (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -21,6 +22,19 @@ CREATE TABLE tmnt (
   name VARCHAR,
   weapon VARCHAR
 );
+
+CREATE TABLE fish (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR,
+  yummy BOOLEAN
+);
+
+INSERT INTO fish (
+  name, yummy
+) VALUES
+('saba', true),
+('buri', true),
+('shake', true);
 
 INSERT INTO tmnt (
   name, weapon
