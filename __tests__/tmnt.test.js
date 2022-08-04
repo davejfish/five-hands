@@ -18,6 +18,16 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#GET /tmnt/:id should return a single TMNT', async () => {
+    const response = await request(app).get('/tmnt/1');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      weapon: expect.any(String),
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
