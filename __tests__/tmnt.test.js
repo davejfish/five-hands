@@ -28,7 +28,7 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  it('#POST /tmnt should add a new tmnt', async () => {
+  it('#INSERT /tmnt should add a new tmnt', async () => {
     const newTMNT = {
       name: 'casey jones',
       weapon: 'hockey stick'
@@ -37,6 +37,15 @@ describe('backend-express-template routes', () => {
     expect(response.status).toBe(200);
     expect(response.body.name).toEqual(newTMNT.name);
     expect(response.body.weapon).toEqual(newTMNT.weapon);
+  });
+
+  it('#PUT /tmnt/:id should update a tmnt', async () => {
+    const update = {
+      name: 'leo',
+    };
+    const response = await request(app).put('/tmnt/1').send(update);
+    expect(response.status).toBe(200);
+    expect(response.body.name).toEqual(update.name);
   });
 
   afterAll(() => {
