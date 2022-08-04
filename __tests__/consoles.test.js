@@ -39,6 +39,15 @@ describe('backend-express-template routes', () => {
     expect(response.body.released).toEqual(newConsole.released);
   });
 
+  it('#PUT /consoles/:id should update an existing console', async () => {
+    const update = {
+      console: 'NES'
+    };
+    const response = await request(app).put('/consoles/1').send(update);
+    expect(response.status).toBe(200);
+    expect(response.body.console).toEqual(update.console);
+  });
+
   afterAll(() => {
     pool.end();
   });
