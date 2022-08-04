@@ -48,6 +48,14 @@ describe('backend-express-template routes', () => {
     expect(response.body.console).toEqual(update.console);
   });
 
+  it('#DELETE /consoles/id should delete an existing console', async () => {
+    const response = await request(app).delete('/consoles/1');
+    expect(response.status).toBe(200);
+
+    const console = await request(app).get('/consoles/1');
+    expect(console.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
