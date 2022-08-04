@@ -35,6 +35,15 @@ describe('backend-express-template routes', () => {
     expect(response.body.platform).toEqual(newSMT.platform);
   });
 
+  it('#PUT /smt should update existing item in the smt table', async () => {
+    const smtUpdate = ({
+      title: 'new megami tensei'
+    });
+    const response = await request(app).put('/smt/1').send(smtUpdate);
+    expect(response.status).toBe(200);
+    expect(response.body.title).toEqual(smtUpdate.title);
+  });
+
   afterAll(() => {
     pool.end();
   });
