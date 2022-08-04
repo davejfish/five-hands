@@ -29,6 +29,17 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#POST /os should add a new os', async () => {
+    const newOS = {
+      name: 'linux',
+      good: true,
+    };
+    const response = await request(app).post('/os').send(newOS);
+    expect(response.status).toBe(200);
+    expect(response.body.name).toEqual(newOS.name);
+    expect(response.body.good).toEqual(newOS.good);
+  });
+
   afterAll(() => {
     pool.end();
   });
