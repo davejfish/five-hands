@@ -44,6 +44,14 @@ describe('backend-express-template routes', () => {
     expect(response.body.title).toEqual(smtUpdate.title);
   });
 
+  it('#DELETE /smt/:id should delete an SMT game', async () => {
+    const response = await request(app).delete('/smt/1');
+    expect(response.status).toBe(200);
+    
+    const smtGame = await request(app).get('/smt/1');
+    expect(smtGame.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
