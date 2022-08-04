@@ -28,6 +28,16 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#INSERT /consoles should add a new console', async () => {
+    const newConsole = {
+      console: 'playstation',
+      released: 1994,
+    };
+    const response = await request(app).post('/consoles').send(newConsole);
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(newConsole);
+  });
+
   afterAll(() => {
     pool.end();
   });
