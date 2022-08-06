@@ -55,7 +55,7 @@ describe('backend-express-template routes', () => {
     expect(response.status).toBe(200);
 
     const deletedFish = await request(app).get('/fish/1');
-    expect(deletedFish.status).toBe(500);
+    expect(deletedFish.status).toBe(404);
   });
 
   afterAll(() => {

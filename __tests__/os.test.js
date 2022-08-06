@@ -54,7 +54,7 @@ describe('backend-express-template routes', () => {
     expect(response.status).toBe(200);
     
     const deletedOS = await request(app).get('/os/1');
-    expect(deletedOS.status).toBe(500);
+    expect(deletedOS.status).toBe(404);
   });
   
   afterAll(() => {

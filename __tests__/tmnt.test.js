@@ -53,7 +53,7 @@ describe('backend-express-template routes', () => {
     expect(response.status).toBe(200);
 
     const deletedTMNT = await request(app).get('/tmnt/1');
-    expect(deletedTMNT.status).toBe(500);
+    expect(deletedTMNT.status).toBe(404);
   });
 
   afterAll(() => {

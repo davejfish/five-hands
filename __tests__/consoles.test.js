@@ -53,7 +53,7 @@ describe('backend-express-template routes', () => {
     expect(response.status).toBe(200);
 
     const console = await request(app).get('/consoles/1');
-    expect(console.status).toBe(500);
+    expect(console.status).toBe(404);
   });
 
   afterAll(() => {
